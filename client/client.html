@@ -15,6 +15,9 @@
           content.innerHTML += `<p>${obj.message}</p>`;
           console.dir(JSON.parse(xhr.response));
         }
+        if(obj.users) {
+          content.innerHTML += `<p>${JSON.stringify(obj.users)}</p>`;
+        }
       }
     };
     const handleResponse = (xhr) => {
@@ -56,17 +59,12 @@
 
       xhr.setRequestHeader('Accept', 'application/json');
 
-      if (method === 'GET') {
-        xhr.onload = () => handleResponse(xhr, true);
-      } else if (method === 'HEAD') {
-        xhr.onload = () => handleResponse(xhr, false);
-      } else if (method === 'POST')
-        xhr.onload = () => handleResponse(xhr, true);
+      xhr.onload = () => handleResponse(xhr);
       xhr.send();
-      
+
       return false;
 
-    };1
+    };
 
     const sendPost = (e, userform) => {
       e.preventDefault();
