@@ -56,17 +56,17 @@
 
       xhr.setRequestHeader('Accept', 'application/json');
 
-      if (method === 'get') {
+      if (method === 'GET') {
         xhr.onload = () => handleResponse(xhr, true);
-      } else if (method === 'head') {
+      } else if (method === 'HEAD') {
         xhr.onload = () => handleResponse(xhr, false);
-      } else if (method === 'post')
+      } else if (method === 'POST')
         xhr.onload = () => handleResponse(xhr, true);
       xhr.send();
       
       return false;
 
-    };
+    };1
 
     const sendPost = (e, userform) => {
       e.preventDefault();
@@ -107,6 +107,8 @@
       userForm.addEventListener('submit', getUsers);
 
     };
+
+    window.onload = init;
   </script>
 </head>
 
